@@ -146,6 +146,12 @@ while True:
         reset()
 
     for letter in command:
+
+        if letter != "." and not re.match(r"\d", letter):
+            # Get out of decimal mode
+            is_decimal = False
+            decimal_place = 0
+            
         # Initialize decimal mode
         if letter == ".":
             is_decimal = True
@@ -177,9 +183,6 @@ while True:
 
         # if + or -:
         if re.match(r"[+-]", letter):
-            # Get out of decimal mode
-            is_decimal = False
-            decimal_place = 0
             # Get out of just equal mode : i.e. 6+== => 18
             if equal_just_happened:
                 current_operation = None
@@ -206,9 +209,6 @@ while True:
             stored_operation = letter
 
         if letter == "=":
-            # Get out of decimal mode
-            is_decimal = False
-            decimal_place = 0
             # Add in temporary operand
             if temp_operand is not None:
                 add_operand(temp_operand)
@@ -241,9 +241,6 @@ while True:
             equal_just_happened = True
 
         if re.match(r"[/\*]", letter):
-            # Get out of decimal mode
-            is_decimal = False
-            decimal_place = 0
             # If second order operation, * or /, similar to + and -,
             # but no need to update base operand
             if equal_just_happened:
@@ -264,9 +261,6 @@ while True:
             current_value = second_argument
 
         if letter == "!":
-            # Get out of decimal mode
-            is_decimal = False
-            decimal_place = 0
             # Negates the latest operand
             current_value *= -1
             if temp_operand is not None:
@@ -280,9 +274,6 @@ while True:
                 base_argument *= -1
 
         if letter == "%":
-            # Get out of decimal mode
-            is_decimal = False
-            decimal_place = 0
             # % changes temporary operand to percentage of base if currently
             # doing + or -
             # and divides temp operand by 100 if currently doing * or /
