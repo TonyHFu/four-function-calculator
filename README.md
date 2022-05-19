@@ -45,5 +45,9 @@ Although I have taken steps to create as many of the iOS four-function calculato
    `>c` currently clears everything and resets calculator to initial state. On iOS, there is the option of clearing an individual item instead of the whole state. However, from experimentation, I have noticed that this functionality behaves differently on an iPhone vs on a Macbook
 2. Possible other scenarios I have not thought about:  
    This exercise showed me how many intricacies are behind the four-function calculator. By playing around with different inputs, I found out that there are a lot more functionalities that aren't obvious like the repeat operations and how clear item is implemented differently on different calculators. I'm sure there are things that I have not thought of as well.
-3. Code refactoring:  
-   My initial solution to this problem was done in about an hour, but I found more intricacies of the calculator at that point and spent 4 more hours to create a better solution. As this is also my first Python project in a while, I then spent another hour refactoring the code into a class based solution
+
+## Time
+
+TL;DR: ~6 total hours
+
+My initial solution to this problem was done in about an hour, but I found more intricacies of the calculator at that point and spent 4 more hours to experiment with the MacBook calculator, trying to read about how these calculators worked, and create a better solution. As this is also my first Python project in a while, I then spent another hour refactoring the code into a class based solution as well as adding a README file.
