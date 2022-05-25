@@ -215,6 +215,23 @@ class Calculator:
         self.decimal_place = 1
 
 
+    def equal_did_not_just_happen(self):
+        """Handles setting equal_just_happened to False and clean up operations
+
+        Parameters
+        ---------
+        None
+
+        Returns
+        -------
+        None
+        """
+        self.current_operation = None
+        self.first_operation = None
+        self.second_operation = None
+        self.equal_just_happened = False
+
+
     def handle_digit(self, digit):
         """Handles adding in new digit
 
@@ -230,10 +247,7 @@ class Calculator:
 
         # Get out of just equal mode (for repeat ='s i.e. 6+== => 18)
         if self.equal_just_happened:
-            self.current_operation = None
-            self.first_operation = None
-            self.second_operation = None
-            self.equal_just_happened = False
+            self.equal_did_not_just_happen()            
         # Get out of just negation mode so not overwriting existing self.temp_operand
         if self.negation_just_happened:
             self.temp_operand = None
@@ -270,10 +284,7 @@ class Calculator:
         
         # Get out of just equal mode : i.e. 6+== => 18
         if self.equal_just_happened:
-            self.current_operation = None
-            self.first_operation = None
-            self.second_operation = None
-            self.equal_just_happened = False
+            self.equal_did_not_just_happen()
 
         # Add in temporary operand and store it for repeat actions
         if self.temp_operand is not None:
@@ -353,16 +364,12 @@ class Calculator:
        
         # Get out of just equal mode : i.e. 6+== => 18
         if self.equal_just_happened:
-            self.current_operation = None
-            self.first_operation = None
-            self.second_operation = None
-            self.equal_just_happened = False
+            self.equal_did_not_just_happen()
 
         # Add in temporary operand and store it for repeat actions
         if self.temp_operand is not None:
             self.add_operand()
             self.stored_argument = self.temp_operand
-            self.current_value = self.temp_operand
             self.temp_operand = None
 
         # update second argument
